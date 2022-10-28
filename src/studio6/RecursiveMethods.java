@@ -14,48 +14,45 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		
-			// FIXME compute the geometric sum for the first n terms recursively
-		if(n == 0) {
+
+		// FIXME compute the geometric sum for the first n terms recursively
+		if (n == 0) {
 			return 0;
-		}
-		else {
-			return (1/Math.pow(2.0, n)) + geometricSum(n-1);
+		} else {
+			return (1 / Math.pow(2.0, n)) + geometricSum(n - 1);
 		}
 	}
 
 	/**
-	 * This method uses recursion to compute the greatest common divisor
-	 * for the two input values
+	 * This method uses recursion to compute the greatest common divisor for the two
+	 * input values
 	 * 
 	 * @param p first operand
 	 * @param q second operand
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		
-			// FIXME compute the gcd of p and q using recursion
-		if(p%q == 0) {
+
+		// FIXME compute the gcd of p and q using recursion
+		if (p % q == 0) {
 			return q;
+		} else {
+			return (gcd(q, p % q));
 		}
-		else {
-			return(gcd(q, p%q));
-		}
-		
+
 	}
 
-	
 	public static int[] reversing(int[] array, int index) {
 		int[] temp = Arrays.copyOf(array, array.length);
-		if(index <= (array.length-1)/2) {
+		if (index <= (array.length - 1) / 2) {
 			return temp;
-		}
-		else {
-			temp[index] = array[array.length-1-index];
-			temp[array.length-1-index] = array[index];
-			return reversing(temp, index-1);
+		} else {
+			temp[index] = array[array.length - 1 - index];
+			temp[array.length - 1 - index] = array[index];
+			return reversing(temp, index - 1);
 		}
 	}
+
 	/**
 	 * This method uses recursion to create a reverse of the given array
 	 * 
@@ -63,12 +60,10 @@ public class RecursiveMethods {
 	 * @return an array with the same data as the input but it reverse order
 	 */
 	public static int[] toReversed(int[] array) {
-		
-			// FIXME create a helper method that can recursively reverse the given array
-		
-			return reversing(array, array.length-1);
-		
-		
+
+		// FIXME create a helper method that can recursively reverse the given array
+		return reversing(array, array.length - 1);
+
 	}
 
 	/**
@@ -83,15 +78,14 @@ public class RecursiveMethods {
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
 		StdDraw.enableDoubleBuffering();
-		if(radius < radiusMinimumDrawingThreshold) {
+		if (radius < radiusMinimumDrawingThreshold) {
 			StdDraw.show();
-		}
-		else {
+		} else {
 			StdDraw.circle(xCenter, yCenter, radius);
-			circlesUponCircles(xCenter+radius, yCenter, radius/3, radiusMinimumDrawingThreshold);
-			circlesUponCircles(xCenter, yCenter+radius, radius/3, radiusMinimumDrawingThreshold);
-			circlesUponCircles(xCenter-radius, yCenter, radius/3, radiusMinimumDrawingThreshold);
-			circlesUponCircles(xCenter, yCenter-radius, radius/3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter + radius, yCenter, radius / 3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter, yCenter + radius, radius / 3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter - radius, yCenter, radius / 3, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter, yCenter - radius, radius / 3, radiusMinimumDrawingThreshold);
 		}
 	}
 
